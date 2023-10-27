@@ -3,15 +3,17 @@ export default function TotalTodo({ todos, setTodos }) {
     const handleClearAll = () => {
         setTodos([])
     }
+    const filteredTodo = todos.filter(todo => todo.done)
 
     return (
-        <>
-            {todos.length > 0 && <div className="font-josefin  p-3 flex justify-start items-center gap-6">
-                <p>You have {todos.length} pending {todos.length > 1 ? 'tasks' : 'task'}</p>
 
-                <button className="bg-blue-500 p-2 rounded-md text-white" onClick={handleClearAll}>Clear All</button>
-            </div>}
+        < div className="flex items-center justify-start gap-6 p-3 font-josefin" >
+            {todos.length > 0 && todos.length - filteredTodo.length > 0 && <p>You have {todos.length - filteredTodo.length} pending {todos.length - filteredTodo.length > 1 ? 'tasks' : 'task'}</p>}
 
-        </>
+            {todos.length > 0 && <button className="p-2 mt-2 text-white bg-blue-500 rounded-md" onClick={handleClearAll}>Clear All</button>}
+
+        </div >
+
+
     )
 }

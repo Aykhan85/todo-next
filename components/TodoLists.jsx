@@ -1,19 +1,11 @@
-import React from 'react'
 import ListItem from './ListItem'
-export default function TodoLists({ todos, setTodos }) {
-
-    const handleDelete = (todo) => {
-        setTodos(todos.filter(t => t.id !== todo.id))
-    }
-
-
-
+export default function TodoLists({ todos, handleDelete, onToggle }) {
     return (
         <>
             {todos.map((todo) => (
 
                 <div key={todo.id} >
-                    <ListItem todo={todo} setTodos={setTodos} onDelete={handleDelete} />
+                    <ListItem todo={todo} onDelete={handleDelete} onToggle={onToggle} />
                 </div>
 
             ))}
